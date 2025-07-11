@@ -4,6 +4,7 @@ import { Global } from '@emotion/react';
 import { HelmetProvider } from 'react-helmet-async';
 import { globalStyles } from './styles/global';
 import { Header } from './components/Header/Header';
+import { Footer } from './components/Footer/Footer';
 import { Home } from './components/Home/Home';
 import { ForWomen } from './components/ForWomen/ForWomen';
 import { Community } from './components/Community/Community';
@@ -12,6 +13,8 @@ import { Investors } from './components/Investors/Investors';
 import { Download } from './components/Download/Download';
 import { Contact } from './components/Contact/Contact';
 import { AppFeatures } from './components/AppFeatures/AppFeatures';
+import { PrivacyPolicy } from './components/Legal/PrivacyPolicy';
+import { TermsOfUse } from './components/Legal/TermsOfUse';
 import Portal from './pages/Portal';
 import Dashboard from './pages/Dashboard';
 
@@ -51,7 +54,10 @@ const AppContent = () => {
         />
         <Route path="/download" element={<Download />} />
         <Route path="/contato" element={<Contact />} />
+        <Route path="/politica-privacidade" element={<PrivacyPolicy />} />
+        <Route path="/termos-uso" element={<TermsOfUse />} />
       </Routes>
+      {!isPortalRoute && <Footer />}
     </>
   );
 };

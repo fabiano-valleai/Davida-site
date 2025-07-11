@@ -7,7 +7,7 @@ import { theme } from '../../styles/theme';
 const Section = styled.section`
   padding: ${theme.spacing['2xl']} ${theme.spacing.xl};
   padding-top: calc(${theme.spacing['2xl']} + 80px);
-  background: linear-gradient(135deg, #FF8C7F 0%, #FF6B6B 100%);
+  background: linear-gradient(135deg, ${theme.colors.primary.peach} 0%, ${theme.colors.primary.rose} 100%);
   min-height: 100vh;
 `;
 
@@ -19,21 +19,21 @@ const Container = styled.div`
 
 const Title = styled.h2`
   font-family: ${theme.typography.fontFamily.heading};
-  font-size: ${theme.typography.fontSize['4xl']};
+  font-size: 2.8rem;
   color: white;
   text-align: center;
-  margin-bottom: ${theme.spacing.xl};
-  padding-top: ${theme.spacing.xl};
+  margin-bottom: ${theme.spacing.lg};
+  padding-top: ${theme.spacing.lg};
 `;
 
 const Subtitle = styled.p`
   font-family: ${theme.typography.fontFamily.body};
-  font-size: ${theme.typography.fontSize.xl};
-  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.95);
   text-align: center;
   max-width: 800px;
-  margin: 0 auto ${theme.spacing['2xl']};
-  line-height: 1.6;
+  margin: 0 auto ${theme.spacing.lg};
+  line-height: 1.7;
 `;
 
 const CardGrid = styled.div`
@@ -41,7 +41,7 @@ const CardGrid = styled.div`
   grid-template-areas: 
     "nao-tentantes tentantes gestantes pos-parto";
   grid-template-columns: repeat(4, 1fr);
-  gap: ${theme.spacing.xl};
+  gap: 2.5rem;
   margin-top: ${theme.spacing.xl};
   max-width: 1200px;
   margin-left: auto;
@@ -70,7 +70,7 @@ const Card = styled(motion.div)<{ area: string; isHighlighted?: boolean }>`
     ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.95))'
     : 'rgba(255, 255, 255, 0.95)'};
   border-radius: ${theme.borderRadius.lg};
-  padding: ${theme.spacing.xl};
+  padding: 2.5rem 1.5rem 2rem 1.5rem;
   text-align: center;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
@@ -112,24 +112,24 @@ const CardIcon = styled.div<{ isHighlighted?: boolean }>`
 const CardTitle = styled.h3<{ isHighlighted?: boolean }>`
   font-family: ${theme.typography.fontFamily.heading};
   font-size: ${props => props.isHighlighted 
-    ? theme.typography.fontSize['3xl']
-    : theme.typography.fontSize['2xl']};
+    ? '2rem'
+    : '1.5rem'};
   color: ${theme.colors.text.primary};
-  margin-bottom: ${theme.spacing.md};
+  margin-bottom: 0.5rem;
 `;
 
 const CardDescription = styled.p`
   font-family: ${theme.typography.fontFamily.body};
-  font-size: ${theme.typography.fontSize.base};
+  font-size: 1.05rem;
   color: ${theme.colors.text.secondary};
   line-height: 1.6;
-  margin-bottom: ${theme.spacing.lg};
+  margin-bottom: 0.75rem;
 `;
 
 const FeatureList = styled.ul`
   list-style: none;
   padding: 0;
-  text-align: left;
+  text-align: center;
   margin-top: auto;
 `;
 
@@ -165,6 +165,10 @@ export const ForWomen: React.FC = () => {
         <meta name="keywords" content="apoio materno, tentantes, gestantes, pós-parto, não tentantes, acolhimento feminino" />
       </Helmet>
 
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 96, marginBottom: 32 }}>
+        <img src="/davidalogo.png" alt="Davida Logo" style={{ height: 85 }} />
+      </div>
+
       <Container>
         <Title>Para Mulheres que Buscam Apoio com Propósito</Title>
         <Subtitle>
@@ -179,17 +183,18 @@ export const ForWomen: React.FC = () => {
             whileInView="visible"
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
+            style={{ paddingTop: '2rem', paddingBottom: '2rem' }} // diminui o espaço vertical
           >
-            <CardIcon>💜</CardIcon>
-            <CardTitle>Não Tentantes</CardTitle>
-            <CardDescription>
-              Apoio e acolhimento para mulheres que não estão buscando gravidez no momento
+            <CardIcon>🌸</CardIcon>
+            <CardTitle style={{ marginBottom: '0.25rem' }}>Autoconhecimento</CardTitle>
+            <CardDescription style={{ marginBottom: '0.5rem' }}>
+              Para mulheres que buscam se conectar consigo mesmas, fortalecer sua autoestima e viver com propósito.
             </CardDescription>
             <FeatureList>
-              <FeatureItem>Grupos de apoio e escuta</FeatureItem>
-              <FeatureItem>Conteúdo sobre autoconhecimento</FeatureItem>
-              <FeatureItem>Meditações e reflexões</FeatureItem>
-              <FeatureItem>Conexão com outras mulheres</FeatureItem>
+              <FeatureItem>Reflexões e meditações guiadas</FeatureItem>
+              <FeatureItem>Grupos de apoio emocional</FeatureItem>
+              <FeatureItem>Conteúdo sobre autocuidado</FeatureItem>
+              <FeatureItem>Rede de conexão feminina</FeatureItem>
             </FeatureList>
           </Card>
 
@@ -202,17 +207,16 @@ export const ForWomen: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <CardIcon isHighlighted>🙏</CardIcon>
+            <CardIcon isHighlighted>🌱</CardIcon>
             <CardTitle isHighlighted>Tentantes</CardTitle>
             <CardDescription>
-              Suporte emocional e espiritual para mulheres em busca da realização da maternidade
+              Para quem sonha em ser mãe, com acolhimento, fé e esperança em cada etapa da jornada.
             </CardDescription>
             <FeatureList>
-              <FeatureItem isHighlighted>Grupos de apoio específicos</FeatureItem>
-              <FeatureItem isHighlighted>Devocionais diários</FeatureItem>
-              <FeatureItem isHighlighted>Meditações guiadas</FeatureItem>
-              <FeatureItem isHighlighted>Compartilhamento de experiências</FeatureItem>
-              <FeatureItem isHighlighted>Acompanhamento personalizado</FeatureItem>
+              <FeatureItem isHighlighted>Grupos de partilha e oração</FeatureItem>
+              <FeatureItem isHighlighted>Devocionais e meditações especiais</FeatureItem>
+              <FeatureItem isHighlighted>Rede de apoio para tentantes</FeatureItem>
+              <FeatureItem isHighlighted>Conteúdo sobre fertilidade e saúde</FeatureItem>
             </FeatureList>
           </Card>
 
@@ -228,14 +232,13 @@ export const ForWomen: React.FC = () => {
             <CardIcon isHighlighted>🤰</CardIcon>
             <CardTitle isHighlighted>Gestantes</CardTitle>
             <CardDescription>
-              Acompanhamento completo durante toda a gestação, com foco no bem-estar físico e espiritual
+              Para quem está vivendo a gestação, com suporte, informação e espiritualidade em cada fase.
             </CardDescription>
             <FeatureList>
-              <FeatureItem isHighlighted>Conteúdo semanal personalizado</FeatureItem>
+              <FeatureItem isHighlighted>Conteúdo semanal para gestantes</FeatureItem>
               <FeatureItem isHighlighted>Grupos por trimestre</FeatureItem>
-              <FeatureItem isHighlighted>Orações específicas</FeatureItem>
+              <FeatureItem isHighlighted>Meditações e orações para gestação</FeatureItem>
               <FeatureItem isHighlighted>Dicas de saúde e bem-estar</FeatureItem>
-              <FeatureItem isHighlighted>Preparação para o parto</FeatureItem>
             </FeatureList>
           </Card>
 
@@ -247,17 +250,16 @@ export const ForWomen: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            <CardIcon>💝</CardIcon>
+            <CardIcon>👶</CardIcon>
             <CardTitle>Pós-parto</CardTitle>
             <CardDescription>
-              Suporte integral para o período pós-parto, focando no vínculo mãe-bebê e na recuperação materna
+              Para o pós-parto, com acolhimento, troca de experiências e apoio para a nova fase da maternidade.
             </CardDescription>
             <FeatureList>
-              <FeatureItem>Apoio emocional 24/7</FeatureItem>
-              <FeatureItem>Orientações de especialistas</FeatureItem>
-              <FeatureItem>Grupos de mães recentes</FeatureItem>
+              <FeatureItem>Grupos de mães e partilha</FeatureItem>
               <FeatureItem>Conteúdo sobre amamentação</FeatureItem>
-              <FeatureItem>Dicas de cuidados com o bebê</FeatureItem>
+              <FeatureItem>Dicas de autocuidado materno</FeatureItem>
+              <FeatureItem>Rede de apoio para o bebê e a mãe</FeatureItem>
             </FeatureList>
           </Card>
         </CardGrid>

@@ -32,6 +32,12 @@ const Logo = styled(Link)`
   font-weight: bold;
 `;
 
+const LogoImg = styled.img`
+  height: 48px;
+  width: auto;
+  display: block;
+`;
+
 const MenuButton = styled.button`
   display: none;
   background: none;
@@ -112,7 +118,9 @@ export const Header: React.FC = () => {
   return (
     <HeaderContainer>
       <Nav>
-        <Logo to="/">Davida</Logo>
+        <Logo to="/">
+          <LogoImg src="/davidalogo.png" alt="Davida Logo" style={{ background: '#fff', borderRadius: 8, padding: 4 }} />
+        </Logo>
         <MenuButton onClick={toggleMenu}>
           {isMenuOpen ? '✕' : '☰'}
         </MenuButton>

@@ -661,6 +661,9 @@ export const Community: React.FC = () => {
   return (
     <Section>
       <Container>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 96, marginBottom: 32 }}>
+          <img src="/davidalogo.png" alt="Davida Logo" style={{ height: 85 }} />
+        </div>
         <Title>Nossa Comunidade de Apoio</Title>
         <Subtitle>
           Um espaço seguro e acolhedor para mulheres compartilharem experiências,

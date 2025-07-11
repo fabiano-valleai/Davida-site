@@ -236,67 +236,61 @@ export const Download: React.FC = () => {
   return (
     <Section id="download">
       <Container>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: 32 }}>
+          <img src="/davidalogo.png" alt="Davida Logo" style={{ height: 85 }} />
+        </div>
         <Title>{content.title}</Title>
         <Subtitle>{content.subtitle}</Subtitle>
-
         <Grid>
           <AppPreview>
             <AppImage>
-              {content.appPreviewImage && !previewError ? (
-                <img 
-                  src={content.appPreviewImage} 
-                  alt="Preview do App" 
-                  onError={handleImageError}
-                />
-              ) : (
-                <div className="preview-placeholder">📱</div>
-              )}
+              <img src="/download.png" alt="App Preview" />
             </AppImage>
           </AppPreview>
 
-          <DownloadSection>
-            <FeaturesList>
-              {content.features.map((feature, index) => (
-                <FeatureItem
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <FeatureIcon>{feature.icon}</FeatureIcon>
-                  <FeatureContent>
-                    <FeatureTitle>{feature.title}</FeatureTitle>
-                    <FeatureDescription>{feature.description}</FeatureDescription>
-                  </FeatureContent>
-                </FeatureItem>
-              ))}
-            </FeaturesList>
+            <DownloadSection>
+              <FeaturesList>
+                {content.features.map((feature, index) => (
+                  <FeatureItem
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    <FeatureIcon>{feature.icon}</FeatureIcon>
+                    <FeatureContent>
+                      <FeatureTitle>{feature.title}</FeatureTitle>
+                      <FeatureDescription>{feature.description}</FeatureDescription>
+                    </FeatureContent>
+                  </FeatureItem>
+                ))}
+              </FeaturesList>
 
-            <StoreButtons>
-              <StoreButton
-                href={content.appStoreLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <img src="/apple-logo.svg" alt="Apple Logo" />
-                <span>App Store</span>
-              </StoreButton>
-              <StoreButton
-                href={content.playStoreLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <img src="/google-play-logo.svg" alt="Google Play Logo" />
-                <span>Play Store</span>
-              </StoreButton>
-            </StoreButtons>
-          </DownloadSection>
-        </Grid>
-      </Container>
-    </Section>
+              <StoreButtons>
+                <StoreButton
+                  href={content.appStoreLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <img src="/apple-logo.svg" alt="Apple Logo" />
+                  <span>App Store</span>
+                </StoreButton>
+                <StoreButton
+                  href={content.playStoreLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <img src="/google-play-logo.svg" alt="Google Play Logo" />
+                  <span>Play Store</span>
+                </StoreButton>
+              </StoreButtons>
+            </DownloadSection>
+          </Grid>
+        </Container>
+      </Section>
   );
 }; 

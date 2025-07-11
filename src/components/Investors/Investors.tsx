@@ -981,6 +981,10 @@ export const Investors: React.FC = () => {
         <meta name="description" content="Seja um investidor ou patrocinador do Davida e faça parte de um ecossistema de acolhimento feminino que transforma vidas." />
       </Helmet>
 
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 96, marginBottom: 32 }}>
+        <img src="/davidalogo.png" alt="Davida Logo" style={{ height: 85 }} />
+      </div>
+
       <Container>
         <HeroSection>
           <HeroContent>

@@ -33,20 +33,24 @@ const Subtitle = styled.p`
 `;
 
 const Grid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1.5fr;
+  display: flex;
+  justify-content: center;
+  max-width: 600px;
+  margin: 0 auto;
   gap: ${theme.spacing['2xl']};
 
   @media (max-width: ${theme.breakpoints.lg}) {
-    grid-template-columns: 1fr;
+    max-width: 100%;
   }
 `;
 
 const ContactInfo = styled.div`
   background: rgba(255, 255, 255, 0.95);
   border-radius: ${theme.borderRadius.lg};
-  padding: ${theme.spacing.xl};
+  padding: ${theme.spacing['2xl']};
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
 `;
 
 const InfoTitle = styled.h3`
@@ -79,7 +83,8 @@ const InfoItem = styled.li`
 
 const SocialLinks = styled.div`
   display: flex;
-  gap: ${theme.spacing.md};
+  justify-content: center;
+  gap: ${theme.spacing.lg};
   margin-top: ${theme.spacing.xl};
 `;
 
@@ -250,6 +255,9 @@ export const Contact: React.FC = () => {
   return (
     <Section id="contato">
       <Container>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 96, marginBottom: 32 }}>
+          <img src="/davidalogo.png" alt="Davida Logo" style={{ height: 85 }} />
+        </div>
         <Title>Entre em Contato</Title>
         <Subtitle>
           Estamos aqui para ajudar. Entre em contato conosco para tirar suas dúvidas
@@ -258,23 +266,49 @@ export const Contact: React.FC = () => {
 
         <Grid>
           <ContactInfo>
-            <InfoTitle>Informações de Contato</InfoTitle>
+            <InfoTitle style={{ textAlign: 'center', marginBottom: 32 }}>Contato Rápido</InfoTitle>
             <InfoList>
-              <InfoItem>
-                <span>📧</span>
-                <span>contato@davida.com</span>
+              <InfoItem style={{ justifyContent: 'center', marginBottom: 24 }}>
+                <span style={{ fontSize: 28, marginRight: 16 }}>💬</span>
+                <span style={{ fontSize: 18 }}>WhatsApp: <a href="https://wa.me/5531982629406" target="_blank" rel="noopener noreferrer" style={{ color: theme.colors.primary.coral, fontWeight: 600, textDecoration: 'none' }}>+55 31 98262-9406</a></span>
               </InfoItem>
-              <InfoItem>
-                <span>📱</span>
-                <span>+55 (11) 99999-9999</span>
-              </InfoItem>
-              <InfoItem>
-                <span>⏰</span>
-                <span>Segunda a Sexta, 9h às 18h</span>
+              <InfoItem style={{ justifyContent: 'center', marginBottom: 32 }}>
+                <span style={{ fontSize: 28, marginRight: 16 }}>⏰</span>
+                <span style={{ fontSize: 18 }}>Segunda a Sexta, 9h às 18h</span>
               </InfoItem>
             </InfoList>
-
-            <InfoTitle>Redes Sociais</InfoTitle>
+            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 40 }}>
+              <a
+                href={`https://wa.me/5531982629406?text=Olá! Gostaria de falar com a equipe Davida.`}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  background: theme.colors.primary.coral,
+                  color: '#fff',
+                  borderRadius: 32,
+                  padding: '16px 40px',
+                  fontWeight: 700,
+                  fontSize: 18,
+                  textDecoration: 'none',
+                  boxShadow: '0 4px 16px rgba(255, 107, 107, 0.15)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 12,
+                  transition: 'all 0.3s ease'
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.background = theme.colors.primary.peach;
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.background = theme.colors.primary.coral;
+                  e.currentTarget.style.transform = 'translateY(0)';
+                }}
+              >
+                <span style={{ fontSize: 24 }}>💬</span> Falar no WhatsApp
+              </a>
+            </div>
+            <InfoTitle style={{ textAlign: 'center', marginBottom: 24 }}>Redes Sociais</InfoTitle>
             <SocialLinks>
               <SocialLink
                 href="https://instagram.com/davida"
@@ -286,84 +320,25 @@ export const Contact: React.FC = () => {
                 📸
               </SocialLink>
               <SocialLink
-                href="https://facebook.com/davida"
+                href="https://tiktok.com/@davida"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
               >
-                📘
+                🎵
               </SocialLink>
               <SocialLink
-                href="https://linkedin.com/company/davida"
+                href="https://wa.me/5531982629406"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
               >
-                💼
+                💬
               </SocialLink>
             </SocialLinks>
           </ContactInfo>
-
-          <Form onSubmit={handleSubmit}>
-            <FormTitle>Envie sua Mensagem</FormTitle>
-            
-            <FormGroup>
-              <Label htmlFor="name">Nome</Label>
-              <Input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-              />
-            </FormGroup>
-
-            <FormGroup>
-              <Label htmlFor="email">E-mail</Label>
-              <Input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
-            </FormGroup>
-
-            <FormGroup>
-              <Label htmlFor="subject">Assunto</Label>
-              <Input
-                type="text"
-                id="subject"
-                name="subject"
-                value={formData.subject}
-                onChange={handleChange}
-                required
-              />
-            </FormGroup>
-
-            <FormGroup>
-              <Label htmlFor="message">Mensagem</Label>
-              <TextArea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                required
-              />
-            </FormGroup>
-
-            <SubmitButton
-              type="submit"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              Enviar Mensagem
-            </SubmitButton>
-          </Form>
         </Grid>
 
         <FAQSection>

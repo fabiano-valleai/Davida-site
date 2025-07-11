@@ -1,21 +1,24 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
+import { motion } from 'framer-motion';
 import { theme } from '../../styles/theme';
 
 const FooterContainer = styled.footer`
-  background: ${theme.colors.primary.peach};
-  padding: ${theme.spacing.xl} 0;
+  background: linear-gradient(135deg, ${theme.colors.primary.peach} 0%, ${theme.colors.primary.rose} 100%);
+  padding: ${theme.spacing['2xl']} ${theme.spacing.xl};
   color: white;
 `;
 
-const FooterContent = styled.div`
+const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 ${theme.spacing.xl};
+`;
+
+const FooterContent = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: ${theme.spacing.xl};
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: ${theme.spacing['2xl']};
+  margin-bottom: ${theme.spacing['2xl']};
 
   @media (max-width: ${theme.breakpoints.md}) {
     grid-template-columns: 1fr;
@@ -28,73 +31,152 @@ const FooterSection = styled.div`
     font-family: ${theme.typography.fontFamily.heading};
     font-size: ${theme.typography.fontSize.xl};
     margin-bottom: ${theme.spacing.lg};
+    color: white;
+  }
+
+  p {
+    font-size: ${theme.typography.fontSize.base};
+    line-height: 1.6;
+    margin-bottom: ${theme.spacing.md};
+    color: rgba(255, 255, 255, 0.9);
   }
 `;
 
-const FooterLinks = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: ${theme.spacing.md};
+const FooterLinks = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    margin-bottom: ${theme.spacing.sm};
+  }
+
+  a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-size: ${theme.typography.fontSize.base};
+    transition: color 0.2s;
+
+    &:hover {
+      color: white;
+    }
+  }
 `;
 
-const FooterLink = styled(Link)`
+const SocialLinks = styled.div`
+  display: flex;
+  gap: ${theme.spacing.md};
+  margin-top: ${theme.spacing.lg};
+
+  @media (max-width: ${theme.breakpoints.md}) {
+    justify-content: center;
+  }
+`;
+
+const SocialLink = styled(motion.a)`
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: white;
   text-decoration: none;
-  font-size: ${theme.typography.fontSize.base};
-  opacity: 0.9;
-  transition: opacity 0.2s;
+  transition: background-color 0.2s;
 
   &:hover {
-    opacity: 1;
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  span {
+    font-size: 18px;
   }
 `;
 
-const FooterBottom = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: ${theme.spacing.xl} ${theme.spacing.xl} 0;
-  text-align: center;
+const BottomBar = styled.div`
   border-top: 1px solid rgba(255, 255, 255, 0.2);
-  margin-top: ${theme.spacing.xl};
+  padding-top: ${theme.spacing.lg};
+  text-align: center;
   font-size: ${theme.typography.fontSize.sm};
-  opacity: 0.8;
+  color: rgba(255, 255, 255, 0.8);
+`;
+
+const Logo = styled.img`
+  height: 60px;
+  margin-bottom: ${theme.spacing.lg};
 `;
 
 export const Footer: React.FC = () => {
   return (
     <FooterContainer>
-      <FooterContent>
-        <FooterSection>
-          <h3>Davida</h3>
-          <FooterLinks>
-            <FooterLink to="/sobre">Sobre nós</FooterLink>
-            <FooterLink to="/contato">Contato</FooterLink>
-            <FooterLink to="/blog">Blog</FooterLink>
-          </FooterLinks>
-        </FooterSection>
+      <Container>
+        <FooterContent>
+          <FooterSection>
+            <Logo src="/davidalogo.png" alt="Davida Logo" />
+            <p>
+              Apoiando mulheres em sua jornada de gravidez e maternidade com 
+              informações, conexões e suporte espiritual.
+            </p>
+            <SocialLinks>
+              <SocialLink
+                href="https://instagram.com/davida"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <span>📸</span>
+              </SocialLink>
+              <SocialLink
+                href="https://tiktok.com/@davida"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <span>🎵</span>
+              </SocialLink>
+              <SocialLink
+                href="https://wa.me/5531982629406"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <span>💬</span>
+              </SocialLink>
+            </SocialLinks>
+          </FooterSection>
 
-        <FooterSection>
-          <h3>Comunidade</h3>
-          <FooterLinks>
-            <FooterLink to="/para-mulheres">Para Mulheres</FooterLink>
-            <FooterLink to="/seja-parceiro">Seja Parceiro</FooterLink>
-            <FooterLink to="/investidores">Investidores</FooterLink>
-          </FooterLinks>
-        </FooterSection>
+          <FooterSection>
+            <h3>Links Úteis</h3>
+            <FooterLinks>
+              <li><a href="/">Início</a></li>
+              <li><a href="/para-mulheres">Para Mulheres</a></li>
+              <li><a href="/download">Download</a></li>
+              <li><a href="/contato">Contato</a></li>
+            </FooterLinks>
+          </FooterSection>
 
-        <FooterSection>
-          <h3>Legal</h3>
-          <FooterLinks>
-            <FooterLink to="/privacidade">Política de Privacidade</FooterLink>
-            <FooterLink to="/termos">Termos de Uso</FooterLink>
-            <FooterLink to="/cookies">Política de Cookies</FooterLink>
-          </FooterLinks>
-        </FooterSection>
-      </FooterContent>
+          <FooterSection>
+            <h3>Legal</h3>
+            <FooterLinks>
+              <li><a href="/politica-privacidade">Política de Privacidade</a></li>
+              <li><a href="/termos-uso">Termos de Uso</a></li>
+            </FooterLinks>
+            <p style={{ marginTop: 24 }}>
+              <strong>Contato:</strong><br />
+              WhatsApp: +55 31 98262-9406<br />
+              Segunda a Sexta, 9h às 18h
+            </p>
+          </FooterSection>
+        </FooterContent>
 
-      <FooterBottom>
-        <p>© {new Date().getFullYear()} Davida. Todos os direitos reservados.</p>
-      </FooterBottom>
+        <BottomBar>
+          <p>&copy; 2024 Davida. Todos os direitos reservados.</p>
+        </BottomBar>
+      </Container>
     </FooterContainer>
   );
 }; 

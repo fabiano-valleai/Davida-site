@@ -375,6 +375,9 @@ export const Partners: React.FC = () => {
       </Helmet>
 
       <Container>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 96, marginBottom: 32 }}>
+          <img src="/davidalogo.png" alt="Davida Logo" style={{ height: 85 }} />
+        </div>
         <Title>Alie sua marca a um propósito que acolhe vidas</Title>
         <Subtitle>
           Conecte-se com mulheres que buscam apoio em sua jornada de vida, fé e maternidade

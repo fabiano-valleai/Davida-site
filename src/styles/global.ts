@@ -12,7 +12,7 @@ export const globalStyles = css`
   
   html, body {
     font-family: ${theme.typography.fontFamily.body};
-    background-color: ${theme.colors.secondary.white};
+    background: linear-gradient(135deg, ${theme.colors.secondary.cream} 0%, ${theme.colors.primary.peach} 60%, ${theme.colors.primary.rose} 100%);
     color: ${theme.colors.text.primary};
     scroll-behavior: smooth;
   }
